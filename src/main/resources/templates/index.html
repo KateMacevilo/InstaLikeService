@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8">
+		<title>Home Page</title>
+		
+	</head>
+	<body>
+	<h1> Hello User	</h1>
+	<div class="container">
+		<h1> REgistration and Login with SpringBoot, Spring security, Thymeleaf, Hibernate, Mysql</h1>
+		Welcome <span sec:autherntication="principal.username"> User </span>
+	</div>
+	</body>
+</html>
