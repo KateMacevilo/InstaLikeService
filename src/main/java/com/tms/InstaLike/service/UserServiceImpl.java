@@ -7,6 +7,7 @@ import com.tms.InstaLike.repository.RoleRepository;
 import com.tms.InstaLike.repository.UserRepository;
 import com.tms.InstaLike.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -40,12 +41,12 @@ public class UserServiceImpl implements UserService {
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getUsername(),
                 passwordEncoder.encode(registrationDto.getPassword()),
-               // registrationDto.getPassword(),
                 registrationDto.getName(),
                 registrationDto.getEmail(),
                 roleRepository.findByName("ROLE_USER"));
 
         return userRepository.save(user);
     }
+
 
 }

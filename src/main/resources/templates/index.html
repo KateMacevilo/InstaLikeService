@@ -10,8 +10,8 @@
 	<body>
 	<h1> Hello User	</h1>
 	<div class="container">
-		<h1> REgistration and Login with SpringBoot, Spring security, Thymeleaf, Hibernate, Mysql</h1>
-		Welcome <span sec:autherntication="principal.username"> User </span>
+		<h1> Registration and Login with SpringBoot, Spring security, Thymeleaf, Hibernate, Mysql</h1>
+		Welcome <span th:text="${username}"></span>
 	</div>
 	</body>
 </html>
