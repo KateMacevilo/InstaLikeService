@@ -1,6 +1,7 @@
 package com.tms.InstaLike.controller;
 
 import com.tms.InstaLike.service.UserService;
+import com.tms.InstaLike.service.UserServiceImpl;
 import com.tms.InstaLike.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserRegistrationController {
 
     private UserService userService;
+
+    @Autowired
+    private UserServiceImpl userServiceImpl;
 
     public UserRegistrationController(UserService userService) {
         super();
@@ -32,8 +36,13 @@ public class UserRegistrationController {
 
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto){
-        userService.save(registrationDto);
-        return "redirect:/registration?success";
+
+        if (!userServiceImpl.isExistsUserByEmailAndUserName(registrationDto.getUsername(), registrationDto.getEmail())) {
+            userService.save(registrationDto);
+            return  "redirect:/registration?success";
+        }
+
+        return "redirect:/registration";
     }
 
 

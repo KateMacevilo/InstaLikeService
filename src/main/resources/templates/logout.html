@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Instagram Like Service</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <style>
+.header {
+  display: block;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  overflow: hidden;
+  box-shadow: 0 5px 4px -4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 12px 20px;
+  margin: 0 -20px 24px;
+}
+
+.header h1 {
+  font-size: 24px;
+}
+
+body {
+  padding: 0 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+</style>
+</head>
+
+<body>
+<div class="header">
+    <a th:href="@{|/|}"> <h1>Instagram Like Service</h1></a>
+</div>
+<h2>Logout</h2>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Log Out"/>
+</form>
+
+</body>
+</html>

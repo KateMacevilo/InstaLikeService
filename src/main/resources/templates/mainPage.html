@@ -1,124 +1,213 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head> 
-  <title>Main Page</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
- 
-<div class="container-fluid">
-  <div class="row justify-content-center">
-  <div class="col-4">Instagram</div>
-  <div class="col-md-4">
- 
-  <img src="https://sun9-56.userapi.com/impf/c845419/v845419803/ccd9f/7IudjLPMF2M.jpg?size=1280x1280&quality=96&sign=c7c9a1d332b06a2826be79ec858fdde2&type=album"
-                     class="rounded-circle" width="32px" height="32px" alt="...">
-  </div>
- </div>
-</div>
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Main Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+	<div class="container-fluid ">
+		<!--   <div class="row col-6 mt-3 mx-3"> -->
+		<!--      <div class="col-10"> -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/mainPage.html">Instagram</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" th:href="@{/registration}">Registration</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" th:href="@{/authorization}">Authorization</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" th:href="@{/mainPage}">MyPage</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" th:href="@{/otherPosts}">Other posts</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" th:href="@{/logout}">Log out</a>
+						</li>
+
+					</ul>
+				</div>
+
+
+
+			</div>
+		</nav>
+		<!-- 	</div> -->
+		<!--   </div> -->
+	</div>
+
+
 </head>
 
 <body>
 <div class="container-fluid bg-light my-3">
- <div class="row justify-content-center">
-    <div class="col-4">
-	<img src="https://sun9-56.userapi.com/impf/c845419/v845419803/ccd9f/7IudjLPMF2M.jpg?size=1280x1280&quality=96&sign=c7c9a1d332b06a2826be79ec858fdde2&type=album"
-                     class="rounded-circle" width="150px" height="150px" alt="...">			 
-	</div>
-	
-    <div class="col-4">
-	
-	<div class="row">
-		<p class="fs-2" ><span th:text="${username}"></span></p>
-	</div>
-	
-	<div class="row">
-		 <div class="col-4">
-			10 публикаций
-		 </div>
-		 <div class="col-4">
-			110 подписчиков
-		 </div>
-		 <div class="col-4">
-			110 подписки
-		 </div>
-	</div>
-	
-	<div class="row mt-3 " >
-		<p class="fs-4">UX/UI Web designer | Катерина </p>
-	</div>
-	
-	<div class="row" >
-		<p class="fs-5 fw-bolde text-black-50">Веб-дизайнер </p>
-	</div>
-	
-	<div class="row mt-2 " >
-		<p class="fs-6">
-		✨Создаю дизайн лендингов
-		💁🏼‍♀️Помогу превратить посетителей сайта в покупателей
-		Связаться со мной👇 </p>
-	</div>
-	
-	</div>
-	
-	<hr align="center" width="300" color="light" />
-	
-	<div class="container px-4">
-	  <div class="row justify-content-center gx-4">
-		<div class="col-3">
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-				Добавить новый пост
-			</button>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <img src="https://sun9-56.userapi.com/impf/c845419/v845419803/ccd9f/7IudjLPMF2M.jpg?size=1280x1280&quality=96&sign=c7c9a1d332b06a2826be79ec858fdde2&type=album"
+                 class="rounded-circle" width="150px" height="150px" alt="...">
+        </div>
 
-			<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Добавить новый пост</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-							<form th:action="@{/upload}" method="post" enctype="multipart/form-data" >
-								<div class="form-group">
+        <div class="col-4">
 
-									<div class="modal-body">
-										<input type="file" name="file" /><br/>
-										<input type="text" name="name" /><br/>
-									</div>
-									<button type="submit" class="btn btn-success"> Save </button>
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								</div>
-							</form>
-<!--							<button type="button" class="btn btn-primary">Save changes</button>-->
+            <div class="row">
+                <p class="fs-2"><span th:text="${username}"></span></p>
+            </div>
 
-					</div>
-				</div>
-			</div>
+            <div class="row">
+                <div class="col-4">
+                    <p th:utext="${countPosts}"> публикаций</p>
+                </div>
+                <div class="col-4">
+                    110 подписчиков
+                </div>
+                <div class="col-4">
+                    110 подписки
+                </div>
+            </div>
+
+            <div class="row mt-3 ">
+                <p class="fs-4">UX/UI Web designer | Катерина </p>
+            </div>
+
+            <div class="row">
+                <p class="fs-5 fw-bolde text-black-50">Веб-дизайнер </p>
+            </div>
+
+            <div class="row mt-2 ">
+                <p class="fs-6">
+                    ✨Создаю дизайн лендингов
+                    💁🏼‍♀️Помогу превратить посетителей сайта в покупателей
+                    Связаться со мной👇 </p>
+            </div>
+
+        </div>
+
+        <hr align="center" width="300" color="light"/>
+
+        <div class="container px-4">
+            <div class="row justify-content-center gx-4">
+                <div class="col-3">
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Добавить новый пост
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Добавить новый пост</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+
+                                        <div class="modal-body">
+                                            <input type="file" name="file"/><br/>
+                                            <input type="text" name="name"/><br/>
+                                        </div>
+                                        <button type="submit" class="btn btn-success"> Save</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </form>
+                                <!--							<button type="button" class="btn btn-primary">Save changes</button>-->
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
 
+        <div class="container mt-4">
+            <div class="row">
 
-		</div>
-		<div class="col-3">
-		  <div class="p-3 border bg-light">Пользовательские внутренние отступы колонок</div>
-		</div>
-		<div class="col-3">
-		  <div class="p-3 border bg-light">Пользовательские внутренние отступы колонок</div>
-		</div>
-	  </div>
-	</div>
-	
-	</div>	
+                <th:block th:each="post, state : ${postList}">
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <!--					 <li><img th:src="@{${'/image/display/'+ post.id}}"-->
+                            <!--							  class="card img-fluid" style="width:300px" alt=""/></li>-->
+                            <img class="card-img-top" th:src="@{${'/image/display/'+ post.id}}"
+                                 data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                                 alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                                 data-holder-rendered="true">
+                            <div class="card-body">
+<!--                                <p><img src="../images/heart.png" width="32" height="32" alt="image description">-->
+<!--                               <p><img th:src="@{/images/heart.png}"></p>-->
+                                   <img th:src="@{/images/heart.png}"/>
+                                <p>
+                                <p class="card-text" th:utext="${post.getCountLikes()}"> likes</p>
+                                <p class="card-text" th:text="${post.description}"></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
 
- </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+            </div>
+        </div>
+
+
+        <!--	 <h1>th:each</h1>-->
+        <!--	 <ul>-->
+        <!--		 <th:block th:each="post, state : ${postList}">-->
+        <!--			 <li th:text = "${state.count}"></li>-->
+        <!--			 <li th:text = "${post.id}"></li>-->
+        <!--			 <li th:text = "${post.description}"></li>-->
+        <!--			 <li><img th:src="@{${'/image/display/'+ post.id}}"-->
+        <!--					  class="card img-fluid" style="width:300px" alt=""/></li>-->
+
+        <!--		 </th:block>-->
+        <!--	 </ul>-->
+
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
 </body>
-
 
 
 </html>

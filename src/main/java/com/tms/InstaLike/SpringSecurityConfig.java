@@ -8,6 +8,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,7 +41,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration", "/authorization").permitAll()
                 .antMatchers("/mainPage/**", "/posts").access("hasRole('ROLE_USER')")
                 .antMatchers("/templates/**").permitAll()
-                .antMatchers("/images/**").permitAll()
+                .antMatchers("/images/*").permitAll()
                 //.antMatchers("/", "/mainPage/**", "/free/**", "/resources/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -49,7 +50,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         .defaultSuccessUrl("/mainPage")
                         .failureUrl("/authorization-error")
                         .permitAll()
-                );
+                )
+                .logout().logoutSuccessUrl("/authorization").permitAll();
     }
 
     @Bean
@@ -65,4 +67,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/images/*");
+    }
 }

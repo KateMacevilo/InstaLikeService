@@ -2,6 +2,7 @@ package com.tms.InstaLike.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "post")
@@ -13,8 +14,8 @@ public class Post {
     private byte[] photo;
     private String description;
 
-    @ManyToMany
-    private List<Like> likeList;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private Set<Like> likeList;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -23,10 +24,9 @@ public class Post {
     public Post() {
     }
 
-    public Post(byte[] photo, String description, List<Like> likeList) {
+    public Post(byte[] photo, String description) {
         this.photo = photo;
         this.description = description;
-        this.likeList = likeList;
     }
 
     public long getId() {
@@ -53,19 +53,23 @@ public class Post {
         this.description = description;
     }
 
-    public List<Like> getLikeList() {
-        return likeList;
-    }
-
-    public void setLikeList(List<Like> likeList) {
-        this.likeList = likeList;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Like> getLikeList() {
+        return likeList;
+    }
+
+    public void setLikeList(Set<Like> likeList) {
+        this.likeList = likeList;
+    }
+
+    public int getCountLikes(){
+       return getLikeList().size();
     }
 }

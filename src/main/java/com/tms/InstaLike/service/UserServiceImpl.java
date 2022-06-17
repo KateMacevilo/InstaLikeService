@@ -1,26 +1,14 @@
 package com.tms.InstaLike.service;
 
-import com.tms.InstaLike.entity.CurrentUser;
-import com.tms.InstaLike.entity.Role;
 import com.tms.InstaLike.entity.User;
 import com.tms.InstaLike.repository.RoleRepository;
 import com.tms.InstaLike.repository.UserRepository;
 import com.tms.InstaLike.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -46,6 +34,16 @@ public class UserServiceImpl implements UserService {
                 roleRepository.findByName("ROLE_USER"));
 
         return userRepository.save(user);
+    }
+
+    public boolean isExistsUserByEmailAndUserName(String userName, String email){
+        boolean exists = true;
+        Optional<User> user = userRepository.findByUsernameAndEmail(userName, email);
+
+        if (!user.isPresent()){
+            exists = false;
+        }
+        return exists;
     }
 
 
